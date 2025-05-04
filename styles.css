@@ -1,0 +1,250 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background: url('bizim_foto.jpg') no-repeat center center fixed;
+    background-size: cover; /* Fotoğraf ekranı kaplasın ama orantılı */
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Daha koyu katman, içerik öne çıksın */
+    z-index: -1;
+}
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffafbd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease-out;
+}
+
+#loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.heart-container {
+    position: relative;
+    width: 130px;
+    height: 120px;
+    animation: pulse 1.5s infinite;
+}
+
+.heart-container::before,
+.heart-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 65px;
+    height: 100px;
+    background: red;
+    border-radius: 65px 65px 0 0;
+}
+
+.heart-container::before {
+    left: 65px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart-container::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+.letter-b {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    z-index: 10;
+}
+
+.letter-z {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    z-index: 10;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+#content {
+    text-align: center;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1); /* İçerik alanı hafif saydam */
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+#content.hidden {
+    display: none;
+}
+
+.poem-heart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.poem {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 400px; /* Şiir için geniş alan */
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.poem h3 {
+    margin: 0 0 10px;
+    font-size: 1.3em;
+    color: #ff6f61;
+}
+
+.poem p {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+h1 {
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: #ff6f61;
+}
+
+.timer {
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.timer h3 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+#together-timer, #couple-timer {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.timer-heart {
+    color: red;
+    font-size: 1.5em;
+    animation: pulse 1s infinite;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.dates {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.date-item {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.date-item h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.date-item p {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 2em; }
+    .date-item { width: 100%; max-width: 300px; }
+    body {
+        background-size: cover;
+        background-position: center;
+        background-attachment: scroll;
+    }
+    .heart-container {
+        width: 100px;
+        height: 90px;
+    }
+    .heart-container::before,
+    .heart-container::after {
+        width: 50px;
+        height: 80px;
+    }
+    .letter-b, .letter-z {
+        font-size: 1.5em;
+        top: 15px;
+    }
+    .letter-b { left: 15px; }
+    .letter-z { right: 15px; }
+    .poem-heart-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .poem {
+        max-width: 90%;
+        padding: 10px;
+    }
+    .poem h3 {
+        font-size: 1.1em;
+    }
+    .poem p {
+        font-size: 0.9em;
+    }
+    .timer {
+        padding: 10px;
+    }
+    #together-timer, #couple-timer {
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 601px) {
+    body {
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+}
